@@ -2,30 +2,37 @@
 @import 'base/fonts'
 @import 'base/variables'
 
-html,
-body
-    height: 100%
+:root
+    --primary-color: black
+    --secondary-color: whitesmoke
+
+html.dark
+    --primary-color: whitesmoke
+    --secondary-color: #333
+
+html.dark
+    background-color: #111
+    color: var(--primary-color)
+
+html
+    transition: all 0.5s
+    transition-timing-function: ease-in
+    scroll-behavior: smooth
 
 body
+    height: 100vh
     margin: 0
     display: flex
-    flex-direction: column
     align-items: center
     justify-content: center
-    // background: $dark-color
-    // font-family: $lato
-    // color: $main-color
+    font-family: $heebo, sans-serif
 
 *
     box-sizing: border-box
     margin: 0
 
-html
-    scroll-behavior: smooth
-
 button
     padding: 0
-    background-color: transparent
     border: none
 
 h1, h2, h3, h4
@@ -54,3 +61,44 @@ li
 
 a
     text-decoration: none
+
+.toggle
+    cursor: pointer
+    background-color: var(--primary-color)
+    color: var(--secondary-color)
+    border-radius: 4px
+    padding: 8px 12px
+    position: absolute
+    top: 100px
+    &:focus
+        outline: none
+
+.clock-container
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+
+.clock
+    position: relative
+    width: 200px
+    height: 200px
+    background-color: #f0f0f0
+
+.needle
+    background-color: var(--primary-color)
+    position: absolute
+    top: 50%
+    left: 50%
+    height: 65px
+    width: 3px
+    transform-origin: bottom center
+    &.hour
+        transform: translate(-50%, -100%) rotate(0deg)
+    &.minute
+        transform: translate(-50%, -100%) rotate(0deg)
+        height: 100px
+    &.second
+        transform: translate(-50%, -100%) rotate(0deg)
+        height: 100px
+        background-color: #e74c3c
